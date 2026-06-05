@@ -20,11 +20,11 @@
 
 ### 1. Portuguese Language Text Processing Constraints (NLP Limitation)
 
-The Portuguese language presents inherent challenges to the keyword extraction process through Aspect-Based Sentiment Analysis (ABSA), resulting in limitations regarding absolute accuracy. Nevertheless, employing root word identification through fundamental lexicon translation methodologies has successfully facilitated the extraction and classification of four distinct error categories: Logistics, Seller, Product, and Customer Service. Among these categories, Seller-related errors (specification mismatches and stock deficiencies) and Logistics failures emerge as the most frequently cited concerns within customer feedback.
+  The Portuguese language presents inherent challenges to the keyword extraction process through Aspect-Based Sentiment Analysis (ABSA), resulting in limitations regarding absolute accuracy. Nevertheless, employing root word identification through fundamental lexicon translation methodologies has successfully facilitated the extraction and classification of four distinct error categories: Logistics, Seller, Product, and Customer Service. Among these categories, Seller-related errors (specification mismatches and stock deficiencies) and Logistics failures emerge as the most frequently cited concerns within customer feedback.
 
 ### 2. Market Basket Analysis Findings
 
-Empirical analysis reveals that co-purchased products are predominantly concentrated within two product categories: "bead_bath_tables" and "housewares." This distribution pattern indicates that other product categories are purchased only when customers identify genuine necessity—a pattern characterized by isolated transactions without sustained cross-purchase behavior or strategic product recommendations. Consequently, the implementation of cross-sell algorithms is not feasible given the current data characteristics and market dynamics.
+  Empirical analysis reveals that co-purchased products are predominantly concentrated within two product categories: "bead_bath_tables" and "housewares." This distribution pattern indicates that other product categories are purchased only when customers identify genuine necessity—a pattern characterized by isolated transactions without sustained cross-purchase behavior or strategic product recommendations. Consequently, the implementation of cross-sell algorithms is not feasible given the current data characteristics and market dynamics.
 
 ### 3. Customer Segmentation Methodology
 
@@ -37,18 +37,19 @@ However, due to the Olist dataset's inherent sparsity (97% of customers execute 
 
 **The following table presents the four customer segments identified within this analytical framework:**
 
-| Customer Segment | Characterization | Shipping Fee Ratio | Purchase Behavior |
-|------------------|------------------|--------------------|-------------------|
-| **High Ticket One-Off** | Customers executing substantial initial purchases (exceptionally high AOV). Due to high product valuation, their shipping fee ratios remain comparatively low. | ~11% | Single transaction occurrence |
-| **Price-Sensitive** | Customers purchasing low-value items but experiencing disproportionately elevated shipping fee ratios relative to transaction value. | ~33% | Single transaction followed by permanent churn |
-| **Sleeping VIPs** | Previously high-value customers (elevated Monetary score) with multiple transaction history, currently inactive (high Recency). | Low/Acceptable | Extended inactivity period |
-| **Recent Customers** | Customers executing transactions in recent periods (very low Recency). Insufficient temporal data to predict VIP elevation or churn probability. | - | Recent transaction engagement |
+| Customer Segment | Characterization | Purchase Behavior |
+|------------------|------------------|-------------------|
+| **High Ticket One-Off** | Customers executing substantial initial purchases (exceptionally high AOV). Due to high product valuation, their shipping fee ratios remain comparatively low. | Single transaction occurrence |
+| **Price-Sensitive** | Customers purchasing low-value items but experiencing disproportionately elevated shipping fee ratios relative to transaction value. | Single transaction followed by permanent churn |
+| **Sleeping VIPs** | Previously high-value customers (elevated Monetary score) with multiple transaction history, currently inactive (high Recency). | Extended inactivity period |
+| **Recent Customers** | Customers executing transactions in recent periods (very low Recency). Insufficient temporal data to predict VIP elevation or churn probability. | Recent transaction engagement |
 
 ---
 
 ## 1. Project Overview
 
-This project presents a comprehensive end-to-end analytical framework for Brazilian e-commerce platform data, encompassing data preprocessing, exploratory analysis, visualization, insight extraction, and actionable recommendation formulation. The dataset is available at: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce?select=olist_customers_dataset.csv
+This project presents a comprehensive end-to-end analytical framework for Brazilian e-commerce platform data, encompassing data preprocessing, exploratory analysis, visualization, insight extraction, and actionable recommendation formulation. 
+The dataset is available at: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce?select=olist_customers_dataset.csv
 
 ---
 
