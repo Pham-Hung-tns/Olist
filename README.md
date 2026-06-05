@@ -60,7 +60,8 @@ Comprehensive data exploration through SQL-based methodologies has revealed seve
 - **Diminished Customer Retention**: The customer return rate stands at 3.12% (representing 98,666K+ orders and 94,983K customer accounts)
 - **Limited Product Category Diversification**: Co-purchased products concentrate within two categories: "bead_bath_tables" and "housewares." Alternative product categories are purchased only upon explicit customer need, reflecting isolated transactions without cross-category encouragement or demand stimulus.
 - **Revenue Growth Plateau**: Despite 2018 revenues exceeding corresponding 2017 figures, monthly revenues demonstrate stagnation—a phenomenon characterized as "quality-eroding growth."
-
+- Orders are appearing that contain no products at all.
+- Reviews in the olist_reviews table are being duplicated.
 ---
 
 ## 3. Problem Diagnosis
