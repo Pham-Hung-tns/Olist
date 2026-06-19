@@ -91,7 +91,7 @@ To systematically address identified issues, a Mutually Exclusive, Collectively 
 
 Results derived from Aspect-Based Sentiment Analysis (ABSA) and K-Means Clustering algorithms.
 
-![Data Modeling](Visualize%20in%20PowerBI/Data%20Modeling.png)
+![Data Modeling](Visualize%20in%20PowerBI/data-model.png)
 
 ---
 
