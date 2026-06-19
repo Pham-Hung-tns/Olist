@@ -46,4 +46,3 @@ order by number_of_orders DESC
 SELECT *
 FROM olist_orders_dataset
 WHERE order_delivered_customer_date = '' AND order_status = 'delivered'
-

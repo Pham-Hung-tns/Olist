@@ -1,26 +1,9 @@
-/*
-Data Quality Note:
-During the EDA process, I discovered some orders (canceled, even delivered)
-have payment records but NO detailed product data (items).
-To ensure the accuracy of financial metrics (GMV) and Seller performance,
-I created a CTE 'Valid_Orders' to serve as the basis for the analyses below.
-*/
-WITH valid_orders AS (
-    -- Lấy những đơn hàng hợp lệ: Có ít nhất 1 sản phẩm và không bị hủy
-    SELECT DISTINCT o.order_id, o.customer_id, o.order_status, o.order_approved_at
-    FROM olist_orders_dataset o
-    INNER JOIN olist_order_items_dataset oi 
-        ON o.order_id = oi.order_id
-    WHERE o.order_status IN ('delivered', 'shipped', 'invoiced', 'processing', 'approved')
-)
-
-
 -- Question: Actual Total Revenue
 -- Insight: total revenue = 16008872.14
 SELECT ROUND(SUM(p.payment_value::numeric),2)
 FROM olist_order_payments_dataset AS p
-INNER JOIN valid_orders 
-ON valid_orders.order_id = p.order_id
+INNER JOIN view_valid_orders 
+ON view_valid_orders.order_id = p.order_id
 
 
 -- Question: Total Revenue by year-month
@@ -35,7 +18,7 @@ ON valid_orders.order_id = p.order_id
     SELECT 
         o.order_id,
         TO_CHAR(o.order_approved_at::TIMESTAMP, 'YYYY-MM') AS revenue_month
-    FROM valid_orders o
+    FROM view_valid_orders o
     WHERE o.order_approved_at != ''
 )
 SELECT
@@ -61,7 +44,7 @@ ORDER BY total_revenue DESC;
 		count(p.order_id) as total_order,
         SUM(p.payment_value)::numeric AS total_payment_value
     FROM olist_order_payments_dataset AS p
-	INNER JOIN valid_orders AS o
+	INNER JOIN view_valid_orders AS o
 	ON o.order_id = p.order_id
     GROUP BY payment_type
 )
@@ -84,7 +67,7 @@ ORDER BY total_payment_value DESC;
 	SELECT 
 		TO_CHAR(o.order_approved_at::TIMESTAMP, 'YYYY-MM') AS revenue_month, 
 		SUM(p.payment_value)::numeric AS payment_value
-	FROM valid_orders AS o
+	FROM view_valid_orders AS o
 	INNER JOIN olist_order_payments_dataset as p
 	ON o.order_id = p.order_id
 	WHERE o.order_approved_at != '' 
@@ -101,7 +84,7 @@ FROM payment_by_month
 	SELECT 
 		TO_CHAR(order_approved_at::TIMESTAMP, 'YYYY-MM') AS revenue_month, 
 		SUM(p.payment_value)::numeric AS payment_value
-	FROM valid_orders AS o
+	FROM view_valid_orders AS o
 	JOIN olist_order_payments_dataset p
 	ON o.order_id = p.order_id
 	WHERE order_approved_at != ''

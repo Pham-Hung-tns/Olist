@@ -15,7 +15,7 @@ SELECT ROUND((SUM(p.payment_value) / COUNT(distinct o.customer_id))::numeric,2) 
 FROM(
 	SELECT order_id, customer_id 
 	FROM olist_orders_dataset
-	WHERE order_approved_at != '' OR order_approved_at IS NOT NULL
+	WHERE order_approved_at != ''
 ) AS o
 INNER JOIN olist_order_payments_dataset AS p
 ON o.order_id = p.order_id
@@ -23,7 +23,6 @@ ON o.order_id = p.order_id
 
 -- Question: Top 10 customers by payment_value
 -- Insight: Any top 10 customers by payment value don't come from "sao paulo"
-
 SELECT
 	c.customer_unique_id,
 	c.customer_city,

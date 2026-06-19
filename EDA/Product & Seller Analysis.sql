@@ -1,26 +1,10 @@
-/*
-Data Quality Note:
-During the EDA process, I discovered some orders (canceled, even delivered)
-have payment records but NO detailed product data (items).
-To ensure the accuracy of financial metrics (GMV) and Seller performance,
-I created a CTE 'Valid_Orders' to serve as the basis for the analyses below.
-*/
-WITH valid_orders AS (
-    -- Lấy những đơn hàng hợp lệ: Có ít nhất 1 sản phẩm và không bị hủy
-    SELECT DISTINCT o.order_id, o.customer_id, o.order_status, o.order_approved_at
-    FROM olist_orders_dataset o
-    INNER JOIN olist_order_items_dataset oi 
-        ON o.order_id = oi.order_id
-    WHERE o.order_status IN ('delivered', 'shipped', 'invoiced', 'processing', 'approved')
-)
-
 
 -- Question: TOP 10 product category with the highest total orders
 -- Insights: "bed_bath_table" is the highest total orders
 SELECT 
     pc.product_category_name_english,
     COUNT(*) AS total_orders
-FROM valid_orders AS o 
+FROM view_valid_orders AS o 
 INNER JOIN olist_order_items_dataset AS i
     ON o.order_id = i.order_id
 INNER JOIN olist_products_dataset p 
@@ -76,7 +60,7 @@ LIMIT 10;
 	    COUNT(*) AS total_items,
 	    COUNT(DISTINCT c.customer_unique_id) AS total_customers
 	FROM olist_order_items_dataset AS oi
-	JOIN valid_orders AS o 
+	JOIN view_valid_orders AS o 
 	    ON o.order_id = oi.order_id
 	INNER JOIN olist_customers_dataset AS c
 	ON o.customer_id = c.customer_id

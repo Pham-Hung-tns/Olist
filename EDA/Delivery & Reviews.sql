@@ -11,7 +11,7 @@ WITH clean_reviews AS (
 	from olist_order_reviews_dataset
 )
 
-, clean_orders AS(
+WITH clean_orders AS(
 	SELECT *
 	FROM olist_orders_dataset AS o
 	WHERE o.order_status = 'delivered' 
