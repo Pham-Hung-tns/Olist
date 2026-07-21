@@ -83,7 +83,7 @@ To systematically address identified issues, a Mutually Exclusive, Collectively 
 - **Product Portfolio**: Vendor-offered products and categorical classifications
 - **Logistics Operations**: Temporal requirements for merchandise transportation from seller to customer
 
-![MECE Tree Diagram](MECE%20tree.png)
+![MECE Tree Diagram](MECE.png)
 
 ---
 
